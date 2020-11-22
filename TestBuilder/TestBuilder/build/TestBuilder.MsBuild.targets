@@ -6,8 +6,8 @@
         </BuildDependsOn>
     </PropertyGroup>
 
-    <Import Project="TestEntityBuilder.MsBuild.tasks" />
-    <Import Project="TestEntityBuilder.MsBuild.props" />
+    <Import Project="TestBuilder.MsBuild.tasks" />
+    <Import Project="TestBuilder.MsBuild.props" />
 
     <Target Name="TestEntityBuilder" AfterTargets="Build">
 
