@@ -1,10 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project>
 
     <PropertyGroup>
         <BuildDependsOn>
             TestEntityBuilder;
         </BuildDependsOn>
     </PropertyGroup>
+
+    <Import Project="TestEntityBuilder.MsBuild.tasks" />
+    <Import Project="TestEntityBuilder.MsBuild.props" />
 
     <Target Name="TestEntityBuilder" AfterTargets="Build">
 
