@@ -14,7 +14,7 @@
         <GenerateTestBuilder
             ProjectPath="$(MSBuildProjectFullPath)"
             AssemblyName="$(AssemblyName)"
-            TestBuilderConfigFiles ="@(TestBuilderConfigFiles)"
+            Config ="@(TestBuilderConfigFiles)"
             >
         </GenerateTestBuilder>
 

@@ -1,5 +1,7 @@
-﻿using Microsoft.Build.Utilities;
+﻿using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
 using System;
+using System.Linq;
 
 namespace TestBuilder
 {
@@ -7,11 +9,11 @@ namespace TestBuilder
     {
         public override bool Execute()
         {
-            Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, "Test2");
-            Log.LogMessage(Microsoft.Build.Framework.MessageImportance.High, Config);
+            Log.LogMessage(MessageImportance.High, "Test2");
+            Log.LogMessage(MessageImportance.High, string.Join(",", Config.Select(x => x.ItemSpec)));
             return true;
         }
 
-        public string Config { get; set; }
+        public ITaskItem[] Config { get; set; }
     }
 }
