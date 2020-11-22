@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>TestBuilder.MsBuild</id>
+    <version>0.0.1</version>
+    <title>TestBuilder.MsBuild</title>
+    <authors>Victor de Baare</authors>
+    <owners>Victor de Baare</owners>
+    <description>TestEntityBuilders based on cofig</description>
+    <summary>Quick code generator for test entity builders</summary>
+    <language>en-US</language>
+    <projectUrl>https://github.com/VictordeBaare/TobascoCore</projectUrl>     
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>          
+    <tags>TestEntityBuilder</tags>
+    <copyright>MIT</copyright>
+  </metadata>
+  <files>
+    <file src="build\**\*" target="build" />
+    <file src="bin\Release\netstandard2.0\*.dll" target="tasks\netstandard2.0" />
+  </files>
+</package>

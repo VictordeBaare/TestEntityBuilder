@@ -1,0 +1,9 @@
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\bin\Debug\netstandard2.0\TestBuilder.dll
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\bin\Debug\netstandard2.0\TestBuilder.deps.json
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\bin\Debug\netstandard2.0\TestBuilder.pdb
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.csprojAssemblyReference.cache
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.csproj.CoreCompileInputs.cache
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.AssemblyInfoInputs.cache
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.AssemblyInfo.cs
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.dll
+C:\Users\Vic\source\repos\TestBuilder\TestBuilder\obj\Debug\netstandard2.0\TestBuilder.pdb

@@ -1,0 +1,3 @@
+﻿<Project>
+    <UsingTask TaskName="TestBuilder.GenerateTestBuilder" AssemblyFile="..\tasks\netstandard2.0\TestBuilder.dll" />
+</Project>
