@@ -15,5 +15,10 @@ namespace TestBuilder
         }
 
         public ITaskItem[] Config { get; set; }
+
+        [Required]
+        public string ProjectPath { get; set; }
+
+        public string AssemblyName { get; set; }
     }
 }
