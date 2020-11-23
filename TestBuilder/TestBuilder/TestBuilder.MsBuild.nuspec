@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>TestBuilder.MsBuild</id>
-    <version>0.0.13</version>
+    <version>0.0.14</version>
     <title>TestBuilder.MsBuild</title>
     <authors>Victor de Baare</authors>
     <owners>Victor de Baare</owners>
@@ -16,6 +16,7 @@
   </metadata>
   <files>
     <file src="build\**\*" target="build" />
-    <file src="bin\Release\netstandard2.0\*.dll" target="tasks\netstandard2.0\lib" />
+      <file src="bin\Release\netstandard2.0\*.dll" target="tasks\netstandard2.0" />
+      <file src="bin\Release\netstandard2.0\*.dll" target="lib" />
   </files>
 </package>
