@@ -12,7 +12,7 @@
     <Target Name="TestEntityBuilder" AfterTargets="Build">
 
         <ItemGroup>
-            <TestBuilderConfigFiles Include="*\*.cs" >
+            <TestBuilderConfigFiles Include="**\*.cs" >
             </TestBuilderConfigFiles>
         </ItemGroup>
 
