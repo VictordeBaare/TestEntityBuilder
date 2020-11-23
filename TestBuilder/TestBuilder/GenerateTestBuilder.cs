@@ -17,7 +17,7 @@ namespace TestBuilder
 
             if (Config != null)
             {
-                Log.LogMessage(MessageImportance.High, string.Join(",", Config.Select(x => x.ItemSpec)));
+                Log.LogMessage(MessageImportance.High, string.Join(",", Config.ItemSpec));
             }
             else
             {
@@ -96,7 +96,7 @@ namespace TestBuilder
             return true;
         }
 
-        public ITaskItem[] Config { get; set; }
+        public ITaskItem Config { get; set; }
 
         [Output]
         public ITaskItem[] GeneratedFiles { get; private set; }
