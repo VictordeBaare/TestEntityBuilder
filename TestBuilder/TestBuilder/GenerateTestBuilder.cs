@@ -10,7 +10,19 @@ namespace TestBuilder
         public override bool Execute()
         {
             Log.LogMessage(MessageImportance.High, "Test2");
-            Log.LogMessage(MessageImportance.High, string.Join(",", Config.Select(x => x.ItemSpec)));
+            
+            if(Config != null) 
+            {
+                Log.LogMessage(MessageImportance.High, string.Join(",", Config.Select(x => x.ItemSpec)));
+            }
+            else
+            {
+                Log.LogMessage(MessageImportance.High, "No config files found");
+            }
+
+            Log.LogMessage(MessageImportance.High, $"{ProjectPath}");
+            Log.LogMessage(MessageImportance.High, $"{AssemblyName}");
+
             return true;
         }
 
