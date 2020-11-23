@@ -1,6 +1,8 @@
 ﻿using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -30,10 +32,13 @@ namespace TestBuilder
                 else
                 {
                     var configs = assembly.GetTypes().Where(x => x.IsClass && typeof(ITestEntityBuilderConfig).IsAssignableFrom(x));
+                    var writer = new FileWriter(Log);
 
                     if(configs != null && configs.Any())
                     {
-                        foreach(var config in configs)
+                        Log.LogMessage(MessageImportance.High, "Implementation Found");
+
+                        foreach (var config in configs)
                         {
                             var item = (ITestEntityBuilderConfig)Activator.CreateInstance(config);
 
@@ -84,8 +89,17 @@ namespace TestBuilder
                                 }
 
                                 stringBuilder.AppendLine("}");
+
+                                var file = new CodeFile
+                                {
+                                    GeneratedCode = stringBuilder.ToString(),
+                                    Path = Path.GetDirectoryName(ProjectPath),
+                                });
+
+                                writer.WriteOutputToFile(file);
                             }
                         }
+                        
                     }
                     else
                     {
