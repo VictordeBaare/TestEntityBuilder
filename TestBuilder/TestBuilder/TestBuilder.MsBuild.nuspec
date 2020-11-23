@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>TestBuilder.MsBuild</id>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
     <title>TestBuilder.MsBuild</title>
     <authors>Victor de Baare</authors>
     <owners>Victor de Baare</owners>
