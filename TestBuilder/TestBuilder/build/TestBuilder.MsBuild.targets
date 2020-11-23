@@ -3,6 +3,7 @@
     <PropertyGroup>
         <BuildDependsOn>
             TestEntityBuilder;
+            IncludeTestGeneratedInProject;
         </BuildDependsOn>
     </PropertyGroup>
 
@@ -16,8 +17,16 @@
             AssemblyName="$(AssemblyName)"
             Config ="@(TestBuilderConfigFiles)"
             >
+
+            <Output TaskParameter="GeneratedFiles" ItemName="TestGeneratedFiles" />
         </GenerateTestBuilder>
 
         <Message Text="Done" Importance="high"/>
+    </Target>
+
+    <Target Name="IncludeTestGeneratedInProject" DependsOnTargets="TestEntityBuilder">
+        <ItemGroup>
+            <Compile Include="@(TestGeneratedFiles)"/>
+        </ItemGroup>
     </Target>
 </Project>
