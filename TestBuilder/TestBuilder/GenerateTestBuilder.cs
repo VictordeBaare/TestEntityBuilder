@@ -2,6 +2,8 @@
 using Microsoft.Build.Utilities;
 using System;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 
 namespace TestBuilder
 {
@@ -18,6 +20,78 @@ namespace TestBuilder
             else
             {
                 Log.LogMessage(MessageImportance.High, "No config files found");
+
+                var assembly = Assembly.Load(AssemblyName);
+
+                if(assembly == null)
+                {
+                    Log.LogMessage(MessageImportance.High, "Assembly not loaded");
+                }
+                else
+                {
+                    var configs = assembly.GetTypes().Where(x => x.IsClass && typeof(ITestEntityBuilderConfig).IsAssignableFrom(x));
+
+                    if(configs != null && configs.Any())
+                    {
+                        foreach(var config in configs)
+                        {
+                            var item = (ITestEntityBuilderConfig)Activator.CreateInstance(config);
+
+                            foreach(var typesToGenerate in item.Configs)
+                            {
+                                var stringBuilder = new IndentedStringBuilder();
+
+                                stringBuilder.AppendLine($"namespace {item.Namespace}")
+                                    .AppendLine("{");
+
+                                using (stringBuilder.Indent())
+                                {
+                                    stringBuilder.AppendLine($"using {typesToGenerate.Namespace};")
+                                        .AppendLine($"using System;")
+                                        .AppendLine($"using System.Linq;")
+                                        .AppendLine($"public partial class {typesToGenerate.Name}Builder")
+                                        .AppendLine("{");
+
+                                    using (stringBuilder.Indent())
+                                    {
+                                        stringBuilder.AppendLine($"private {typesToGenerate.Name} _entity");
+                                        stringBuilder.AppendLine();
+                                        stringBuilder.AppendLine($"private {typesToGenerate.Name}Builder()")
+                                            .AppendLine("{");
+
+                                        using (stringBuilder.Indent())
+                                        {
+                                            stringBuilder.AppendLine($"_entity = new {typesToGenerate}();");
+                                            stringBuilder.AppendLine($"InitializeEntity(_entity);");
+                                        }
+
+                                        stringBuilder.AppendLine("}");
+                                        stringBuilder.AppendLine();
+                                        stringBuilder.AppendLine($"partial InitializeEntity({typesToGenerate.Name} entity);");
+
+                                        stringBuilder.AppendLine($"public static {typesToGenerate.Name}Builder Valid()")
+                                            .AppendLine("{");
+
+                                        using (stringBuilder.Indent())
+                                        {
+                                            stringBuilder.AppendLine($"return new {typesToGenerate.Name}Builder()");
+                                        }
+
+                                        stringBuilder.AppendLine("}");
+                                    }
+
+                                    stringBuilder.AppendLine("}");
+                                }
+
+                                stringBuilder.AppendLine("}");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Log.LogMessage(MessageImportance.High, "No implementations found");
+                    }
+                }
             }
 
             Log.LogMessage(MessageImportance.High, $"{ProjectPath}");
