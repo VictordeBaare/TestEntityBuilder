@@ -94,7 +94,7 @@ namespace TestBuilder
                                 {
                                     GeneratedCode = stringBuilder.ToString(),
                                     Path = Path.GetDirectoryName(ProjectPath),
-                                });
+                                };
 
                                 writer.WriteOutputToFile(file);
                             }
